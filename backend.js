@@ -26,12 +26,13 @@ function randomOperand(){
 
 
     bitShift = Math.random();
-    if(0.5 < bitShift <= 0.75) {
+    console.log(bitShift);
+    if(0.5 < bitShift && bitShift <= 0.75) {
         let shift = Math.floor(Math.random()*2) + 1;
         text = "(" + text + " << " + shift + ")";
         num <<= shift;
     }
-    else {
+    else if (0.75 < bitShift) {
         let shift = Math.floor(Math.random()*2) + 1;
         text = "(" + text + " >> " + shift +")";
         num >>= shift;
@@ -63,7 +64,7 @@ function generate() {
         let operator = Math.floor(Math.random() * operators.length);
         question += " " + operators[operator][0] + " ";
         [num, text] = randomOperand();
-        question += num;
+        question += text;
         answer = operators[operator][1](answer,num);
 
     }
